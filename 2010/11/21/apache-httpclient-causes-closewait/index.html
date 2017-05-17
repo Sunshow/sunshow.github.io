@@ -5,11 +5,12 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans,en,default">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="google" content="notranslate" />
 
 
 
@@ -94,10 +95,10 @@
 <meta name="keywords" content="CLOSE_WAIT,http,url,连接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache HttpClient与CLOSE_WAIT">
-<meta property="og:url" content="https://sunshow.github.io/2010/11/21/apache-httpclient-causes-closewait/index.html">
+<meta property="og:url" content="https://sunshow.net/2010/11/21/apache-httpclient-causes-closewait/index.html">
 <meta property="og:site_name" content="Sunshow Life">
 <meta property="og:description" content="前几天开始服务器时不时无法accept新连接，由于线上环境的原因都没时间调试直接重启了事昨天频繁发生了几次，仔细看了下系统日志发现：1java.net.SocketException: Too many open files 用netstat看发现有大量的CLOSE_WAIT，搜索发现与libcurl的处理类似，apache-commons的HttpClient也默认保持了连接待复用处理。 解决办">
-<meta property="og:updated_time" content="2017-05-17T06:41:25.000Z">
+<meta property="og:updated_time" content="2017-05-17T07:58:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache HttpClient与CLOSE_WAIT">
 <meta name="twitter:description" content="前几天开始服务器时不时无法accept新连接，由于线上环境的原因都没时间调试直接重启了事昨天频繁发生了几次，仔细看了下系统日志发现：1java.net.SocketException: Too many open files 用netstat看发现有大量的CLOSE_WAIT，搜索发现与libcurl的处理类似，apache-commons的HttpClient也默认保持了连接待复用处理。 解决办">
@@ -128,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="https://sunshow.github.io/2010/11/21/apache-httpclient-causes-closewait/"/>
+  <link rel="canonical" href="https://sunshow.net/2010/11/21/apache-httpclient-causes-closewait/"/>
 
 
 
@@ -254,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://sunshow.github.io/2010/11/21/apache-httpclient-causes-closewait/">
+    <link itemprop="mainEntityOfPage" href="https://sunshow.net/2010/11/21/apache-httpclient-causes-closewait/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sunshow">
@@ -352,7 +353,7 @@
 
       
         <p>前几天开始服务器时不时无法accept新连接，由于线上环境的原因都没时间调试直接重启了事<br>昨天频繁发生了几次，仔细看了下系统日志发现：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java.net.SocketException: Too many open files</div></pre></td></tr></table></figure></p>
-<p>用netstat看发现有大量的CLOSE_WAIT，搜索发现与<a href="http://blog.sunshow.net/2010/03/libcurl-and-close-wait/" target="_blank" rel="external">libcurl的处理</a>类似，apache-commons的HttpClient也默认保持了连接待复用处理。</p>
+<p>用netstat看发现有大量的CLOSE_WAIT，搜索发现与<a href="/2010/03/02/libcurl-and-close-wait/">libcurl的处理</a>类似，apache-commons的HttpClient也默认保持了连接待复用处理。</p>
 <p>解决办法：</p>
 <ul>
 <li><p>每次使用完都完全关闭连接</p>

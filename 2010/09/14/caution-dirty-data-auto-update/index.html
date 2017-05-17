@@ -5,11 +5,12 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans,en,default">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="google" content="notranslate" />
 
 
 
@@ -94,7 +95,7 @@
 <meta name="keywords" content="hibernate,spring,transaction,事务,更新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Spring+Hibernate]小心处理脏数据的自动更新">
-<meta property="og:url" content="https://sunshow.github.io/2010/09/14/caution-dirty-data-auto-update/index.html">
+<meta property="og:url" content="https://sunshow.net/2010/09/14/caution-dirty-data-auto-update/index.html">
 <meta property="og:site_name" content="Sunshow Life">
 <meta property="og:description" content="有并发请求的时候会存在这种隐患例如请求A和B都是同一个Action的实例，并取了同样的数据做处理A–&amp;gt;取数据–&amp;gt;调用set方法设置A相关的数据–&amp;gt;（B处理数据的时间点）–&amp;gt;页面展现B–&amp;gt;取数据–&amp;gt;调用set方法设置B相关的数据–&amp;gt;页面展现 也就是说在A设置完数据到页面展现的中间这个时间段里B又把同样的数据设置成了其他的值这时候Spring的事务管理就会检测">
 <meta property="og:updated_time" content="2017-05-17T06:33:34.000Z">
@@ -128,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="https://sunshow.github.io/2010/09/14/caution-dirty-data-auto-update/"/>
+  <link rel="canonical" href="https://sunshow.net/2010/09/14/caution-dirty-data-auto-update/"/>
 
 
 
@@ -254,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://sunshow.github.io/2010/09/14/caution-dirty-data-auto-update/">
+    <link itemprop="mainEntityOfPage" href="https://sunshow.net/2010/09/14/caution-dirty-data-auto-update/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sunshow">
