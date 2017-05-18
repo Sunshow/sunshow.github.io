@@ -255,6 +255,161 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://sunshow.net/2017/05/18/spring-data-jpa-add-custom-default-method/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sunshow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunshow Life">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/18/spring-data-jpa-add-custom-default-method/" itemprop="url">Spring Data JPA 添加自定义默认方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T13:42:12+08:00">
+                2017-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通常使用 Spring Data JPA 时，都会创建一个 BaseRepository，或者继承 Spring 已经预设的一些预设的接口例如 CrudRepository 等，以自建 BaseRepository 为例（为了简化只保留了一个方法）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@NoRepositoryBean</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BaseRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span> <span class="keyword">extends</span> <span class="title">Serializable</span>&gt; <span class="keyword">extends</span> <span class="title">Repository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt; </span>&#123;</div><div class="line">    <span class="function">T <span class="title">findOne</span><span class="params">(ID id)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>加载基础配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@EnableTransactionManagement</span></div><div class="line"><span class="meta">@EnableJpaRepositories</span>(basePackages = <span class="string">"foo.bar.repository"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JpaConfig</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">entityPackagesToScan</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"foo.bar.entity"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Properties <span class="title">additionalProperties</span><span class="params">()</span> </span>&#123;</div><div class="line">        Properties properties = <span class="keyword">new</span> Properties();</div><div class="line">        <span class="comment">// 省略各种参数配置</span></div><div class="line">        <span class="keyword">return</span> properties;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> LocalContainerEntityManagerFactoryBean <span class="title">entityManagerFactory</span><span class="params">()</span> </span>&#123;</div><div class="line">        LocalContainerEntityManagerFactoryBean em = <span class="keyword">new</span> LocalContainerEntityManagerFactoryBean();</div><div class="line">        em.setDataSource(dataSource());</div><div class="line">        <span class="comment">// 指定要扫描的 entity 包路径</span></div><div class="line">        em.setPackagesToScan(entityPackagesToScan());</div><div class="line"></div><div class="line">        JpaVendorAdapter vendorAdapter = <span class="keyword">new</span> HibernateJpaVendorAdapter();</div><div class="line">        em.setJpaVendorAdapter(vendorAdapter);</div><div class="line">        em.setJpaProperties(additionalProperties());</div><div class="line"></div><div class="line">        <span class="keyword">return</span> em;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@PreDestroy</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        dataSource().close();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@PostConstruct</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postConstruct</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            dataSource().init();</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</div><div class="line">            logger.error(e.getMessage(), e);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> DruidDataSource <span class="title">dataSource</span><span class="params">()</span></span>&#123;</div><div class="line">        DruidDataSource dataSource = <span class="keyword">new</span> DruidDataSource();</div><div class="line">        <span class="comment">// 省略数据源配置</span></div><div class="line">        <span class="keyword">return</span> dataSource;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> PlatformTransactionManager <span class="title">transactionManager</span><span class="params">()</span></span>&#123;</div><div class="line">        EntityManagerFactory factory = entityManagerFactory().getObject();</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JpaTransactionManager(factory);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> PersistenceExceptionTranslationPostProcessor <span class="title">exceptionTranslation</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PersistenceExceptionTranslationPostProcessor();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上就完成了基本配置可以使用 Spring Data JPA 了，回到本文的目的：如何添加一个自定义的默认方法？<br>为单个 Repository 添加自定义实现的方法很简单略过，下面以添加一个名为 findOneForUpdate 的自定义默认方法为例进行代码示例（即全局为每个 Entity 的 Repository 添加按 ID 锁行功能）。</p>
+<p>首先创建一个新的接口 BaseInternalRepository ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@NoRepositoryBean</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BaseInternalRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span> <span class="keyword">extends</span> <span class="title">Serializable</span>&gt; <span class="keyword">extends</span> <span class="title">Repository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt; </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 锁行读写的方式通过ID获取对象</div><div class="line">     * <span class="doctag">@param</span> id 对象ID</div><div class="line">     * <span class="doctag">@return</span> 对应的对象</div><div class="line">     */</div><div class="line">    <span class="function">T <span class="title">findOneForUpdate</span><span class="params">(ID id)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改原先的 BaseRepository，使其继承新的这个接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@NoRepositoryBean</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BaseRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span> <span class="keyword">extends</span> <span class="title">Serializable</span>&gt; <span class="keyword">extends</span> <span class="title">BaseInternalRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt; </span>&#123;</div><div class="line">    <span class="function">T <span class="title">findOne</span><span class="params">(ID id)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为新创建的 BaseInternalRepository 接口添加实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseInternalRepositoryImpl</span>&lt;<span class="title">T</span>, <span class="title">ID</span> <span class="keyword">extends</span> <span class="title">Serializable</span>&gt; <span class="keyword">extends</span> <span class="title">SimpleJpaRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt; <span class="keyword">implements</span> <span class="title">BaseInternalRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> EntityManager entityManager;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BaseInternalRepositoryImpl</span><span class="params">(JpaEntityInformation&lt;T, ?&gt; entityInformation, EntityManager entityManager)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(entityInformation, entityManager);</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.entityManager = entityManager;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BaseInternalRepositoryImpl</span><span class="params">(Class&lt;T&gt; domainClass, EntityManager entityManager)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(domainClass, entityManager);</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.entityManager = entityManager;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">findOneForUpdate</span><span class="params">(ID id)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> entityManager.find(<span class="keyword">this</span>.getDomainClass(), id, LockModeType.PESSIMISTIC_WRITE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> Page&lt;T&gt; <span class="title">readPageWithoutCountQuery</span><span class="params">(TypedQuery&lt;T&gt; query, Pageable pageable, Specification&lt;T&gt; spec)</span> </span>&#123;</div><div class="line">        query.setFirstResult(pageable.getOffset());</div><div class="line">        query.setMaxResults(pageable.getPageSize());</div><div class="line"></div><div class="line">        List&lt;T&gt; content = query.getResultList();</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PageImpl&lt;T&gt;(content, pageable, content.size());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注：SimpleJpaRepository 即 Spring Data JPA 默认用来代理创建 Repository 实例的实现类。</p>
+<p>接下来要把自定义的实现替换掉默认实现，先创建一个自定义的生成 Repository 实例的工厂类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseRepositoryFactoryBean</span>&lt;<span class="title">R</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">T</span>, <span class="title">I</span>&gt;, <span class="title">T</span>,</span></div><div class="line">        <span class="title">I</span> <span class="keyword">extends</span> <span class="title">Serializable</span>&gt; <span class="keyword">extends</span> <span class="title">JpaRepositoryFactoryBean</span>&lt;<span class="title">R</span>, <span class="title">T</span>, <span class="title">I</span>&gt; &#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> RepositoryFactorySupport <span class="title">createRepositoryFactory</span><span class="params">(EntityManager em)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BaseRepositoryFactory(em);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseRepositoryFactory</span>&lt;<span class="title">T</span>, <span class="title">I</span> <span class="keyword">extends</span> <span class="title">Serializable</span>&gt;</span></div><div class="line">            <span class="keyword">extends</span> <span class="title">JpaRepositoryFactory</span> &#123;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">BaseRepositoryFactory</span><span class="params">(EntityManager em)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>(em);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="keyword">protected</span> Class&lt;?&gt; getRepositoryBaseClass(RepositoryMetadata metadata) &#123;</div><div class="line">            <span class="comment">// 使用自定义的实现类</span></div><div class="line">            <span class="keyword">return</span> BaseInternalRepositoryImpl.class;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改 JPA 配置使用自定义的工厂类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@EnableTransactionManagement</span></div><div class="line"><span class="meta">@EnableJpaRepositories</span>(</div><div class="line">    basePackages = <span class="string">"foo.bar.repository"</span>,</div><div class="line">    repositoryFactoryBeanClass = BaseRepositoryFactoryBean.class)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JpaConfig</span> </span>&#123;</div><div class="line">    <span class="comment">// 省去中间代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>大功告成！</p>
+<p>基本原理是利用了 Repository 实例的创建过程：</p>
+<ol>
+<li>查找是否有自定义的实现，如果有使用自定义实现提供的方法</li>
+<li>如果还有未实现的方法，使用默认代理类中的方法，即 BaseInternalRepositoryImpl</li>
+</ol>
+<p>通过这种方式，可以很方便的添加各种自定义的默认方法，如果有需要定制的，也可以在每个 Repository 的自定义实现中进行覆盖。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://sunshow.net/2017/05/17/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1579,140 +1734,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://sunshow.net/2012/07/04/macos-flush-dns-cache/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sunshow">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunshow Life">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/07/04/macos-flush-dns-cache/" itemprop="url">MacOS清空DNS缓存</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-07-04T09:07:57+08:00">
-                2012-07-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac-OS-X/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac OS X</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dscacheutil -flushcache</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1762,7 +1783,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1784,7 +1805,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">118</span>
+                <span class="site-state-item-count">120</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
