@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sunshow Life</title>
+  <subtitle>Beyond</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://sunshow.net/"/>
+  <updated>2017-05-18T06:41:14.000Z</updated>
+  <id>https://sunshow.net/</id>
+  
+  <author>
+    <name>Sunshow</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Data JPA 添加自定义默认方法</title>
+    <link href="https://sunshow.net/2017/05/18/spring-data-jpa-add-custom-default-method/"/>
+    <id>https://sunshow.net/2017/05/18/spring-data-jpa-add-custom-default-method/</id>
+    <published>2017-05-18T05:42:12.000Z</published>
+    <updated>2017-05-18T06:41:14.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;通常使用 Spring Data JPA 时，都会创建一个 BaseRepository，或者继承 Spring 已经预设的一些预设的接口例如 CrudRepository 等，以自建 BaseRepository 为例（为了简化只保留了一个方法）：&lt;/p&gt;
+&lt;figure
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+    
+      <category term="Spring" scheme="https://sunshow.net/tags/Spring/"/>
+    
+      <category term="JPA" scheme="https://sunshow.net/tags/JPA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://sunshow.net/2017/05/17/hello-world/"/>
+    <id>https://sunshow.net/2017/05/17/hello-world/</id>
+    <published>2017-05-17T03:38:54.000Z</published>
+    <updated>2017-05-17T03:38:54.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Launch a new blog, which is based on github.io and hexo.&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot 非 Web 项目运行</title>
+    <link href="https://sunshow.net/2017/01/06/springboot-non-web-project/"/>
+    <id>https://sunshow.net/2017/01/06/springboot-non-web-project/</id>
+    <published>2017-01-06T07:32:33.000Z</published>
+    <updated>2017-05-17T07:20:36.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有时候一些项目并不需要提供 Web 服务，例如跑定时任务的项目，如果都按照 Web 项目启动未免画蛇添足浪费资源&lt;/p&gt;
+&lt;p&gt;为了达到非 Web 运行的效果，首先调整 Maven 依赖，不再依赖 spring-boot-starter-web，转而依赖最基础的 sprin
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://sunshow.net/tags/SpringBoot/"/>
+    
+      <category term="web" scheme="https://sunshow.net/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OkHttp 和 AsyncHttpClient 性能对比</title>
+    <link href="https://sunshow.net/2017/01/05/performance-comparison-between-okhttp-and-asynchttpclient/"/>
+    <id>https://sunshow.net/2017/01/05/performance-comparison-between-okhttp-and-asynchttpclient/</id>
+    <published>2017-01-05T02:14:34.000Z</published>
+    <updated>2017-05-17T09:04:57.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;OkHttp: &lt;a href=&quot;http://square.github.io/okhttp/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://square.github.io/okhttp/&lt;/a&gt;&lt;br&gt;AsyncHttpClient: 
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+    
+      <category term="AsyncHttpClient" scheme="https://sunshow.net/tags/AsyncHttpClient/"/>
+    
+      <category term="OkHttp" scheme="https://sunshow.net/tags/OkHttp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring MVC 异常响应编码设置</title>
+    <link href="https://sunshow.net/2016/12/30/spring-mvc-error-handler-charset-settings/"/>
+    <id>https://sunshow.net/2016/12/30/spring-mvc-error-handler-charset-settings/</id>
+    <published>2016-12-30T12:58:21.000Z</published>
+    <updated>2017-05-17T07:17:20.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;直接代码说话&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+    
+      <category term="spring" scheme="https://sunshow.net/tags/spring/"/>
+    
+      <category term="编码" scheme="https://sunshow.net/tags/%E7%BC%96%E7%A0%81/"/>
+    
+      <category term="ExceptionHandler" scheme="https://sunshow.net/tags/ExceptionHandler/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apache CXF 客户端开发</title>
+    <link href="https://sunshow.net/2016/06/28/apache-cxf-client-development/"/>
+    <id>https://sunshow.net/2016/06/28/apache-cxf-client-development/</id>
+    <published>2016-06-28T10:07:39.000Z</published>
+    <updated>2017-05-17T07:16:29.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;通过-WSDL-生成-Java-代码&quot;&gt;&lt;a href=&quot;#通过-WSDL-生成-Java-代码&quot; class=&quot;headerlink&quot; title=&quot;通过 WSDL 生成 Java 代码&quot;&gt;&lt;/a&gt;通过 WSDL 生成 Java 代码&lt;/h2&gt;&lt;p&gt;在 IDEA
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+      <category term="WebDev" scheme="https://sunshow.net/categories/Java/WebDev/"/>
+    
+    
+      <category term="cxf" scheme="https://sunshow.net/tags/cxf/"/>
+    
+      <category term="Web Service" scheme="https://sunshow.net/tags/Web-Service/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Maven Tips</title>
+    <link href="https://sunshow.net/2014/03/24/maven-tips/"/>
+    <id>https://sunshow.net/2014/03/24/maven-tips/</id>
+    <published>2014-03-24T15:05:45.000Z</published>
+    <updated>2017-05-17T07:02:47.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Nexus&quot;&gt;&lt;a href=&quot;#Nexus&quot; class=&quot;headerlink&quot; title=&quot;Nexus&quot;&gt;&lt;/a&gt;Nexus&lt;/h2&gt;&lt;h3 id=&quot;使用本地代理仓库&quot;&gt;&lt;a href=&quot;#使用本地代理仓库&quot; class=&quot;headerlink&quot; titl
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+    
+      <category term="deploy" scheme="https://sunshow.net/tags/deploy/"/>
+    
+      <category term="maven" scheme="https://sunshow.net/tags/maven/"/>
+    
+      <category term="nexus" scheme="https://sunshow.net/tags/nexus/"/>
+    
+      <category term="plugin" scheme="https://sunshow.net/tags/plugin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx反向代理配置keepalive</title>
+    <link href="https://sunshow.net/2013/08/18/config-keepalive-of-nginx-proxy/"/>
+    <id>https://sunshow.net/2013/08/18/config-keepalive-of-nginx-proxy/</id>
+    <published>2013-08-18T13:01:24.000Z</published>
+    <updated>2017-05-17T06:54:04.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有个项目上的Keep-Alive配置一直不起作用，检查了很久代码找不到问题，然后灵光一现想到应该是反向代理配置的问题&lt;/p&gt;
+&lt;p&gt;即：client—–nginx proxy—–real server&lt;/p&gt;
+&lt;p&gt;client配置了使用keepalive，real ser
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://sunshow.net/categories/Linux/"/>
+    
+      <category term="Network" scheme="https://sunshow.net/categories/Linux/Network/"/>
+    
+      <category term="WebDev" scheme="https://sunshow.net/categories/Linux/Network/WebDev/"/>
+    
+    
+      <category term="keepalive" scheme="https://sunshow.net/tags/keepalive/"/>
+    
+      <category term="nginx" scheme="https://sunshow.net/tags/nginx/"/>
+    
+      <category term="proxy" scheme="https://sunshow.net/tags/proxy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决nginx的404页面使用SSI时循环嵌套的问题</title>
+    <link href="https://sunshow.net/2013/04/16/nginx-404-page-nested-include-issue-while-using-ssi/"/>
+    <id>https://sunshow.net/2013/04/16/nginx-404-page-nested-include-issue-while-using-ssi/</id>
+    <published>2013-04-16T10:06:39.000Z</published>
+    <updated>2017-05-17T06:47:37.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;问题场景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;nginx配置了404页面且指向一个使用了SSI include的页面（例如：404.shtml）&lt;/li&gt;
+&lt;li&gt;由于配置等原因，404.shtml中include的内容也不存在（也返回404）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;造成结果
+    
+    </summary>
+    
+      <category term="WebDev" scheme="https://sunshow.net/categories/WebDev/"/>
+    
+    
+      <category term="nginx" scheme="https://sunshow.net/tags/nginx/"/>
+    
+      <category term="ssi" scheme="https://sunshow.net/tags/ssi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IntelliJ IDEA控制台中文乱码</title>
+    <link href="https://sunshow.net/2013/04/07/intellij-idea-chinese-disorderly-code-on-console/"/>
+    <id>https://sunshow.net/2013/04/07/intellij-idea-chinese-disorderly-code-on-console/</id>
+    <published>2013-04-07T13:16:17.000Z</published>
+    <updated>2017-05-17T03:51:25.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;貌似是升级12.1之后开始的，之前中文系统没有问题&lt;/p&gt;
+&lt;p&gt;参考&lt;a href=&quot;http://www.kafeitu.me/tools/2013/03/26/intellij-deal-chinese-disorderly-code.html&quot; target=&quot;_b
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+    
+      <category term="ide" scheme="https://sunshow.net/tags/ide/"/>
+    
+      <category term="IntelliJ IDEA" scheme="https://sunshow.net/tags/IntelliJ-IDEA/"/>
+    
+      <category term="乱码" scheme="https://sunshow.net/tags/%E4%B9%B1%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MacOS清空DNS缓存</title>
+    <link href="https://sunshow.net/2012/07/04/macos-flush-dns-cache/"/>
+    <id>https://sunshow.net/2012/07/04/macos-flush-dns-cache/</id>
+    <published>2012-07-04T01:07:57.000Z</published>
+    <updated>2017-05-17T06:46:03.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line
+    
+    </summary>
+    
+      <category term="Mac OS X" scheme="https://sunshow.net/categories/Mac-OS-X/"/>
+    
+    
+      <category term="cache" scheme="https://sunshow.net/tags/cache/"/>
+    
+      <category term="DNS" scheme="https://sunshow.net/tags/DNS/"/>
+    
+      <category term="缓存" scheme="https://sunshow.net/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Hibernate]映射时转换日期格式</title>
+    <link href="https://sunshow.net/2012/03/30/hibernate-format-date-on-mapping/"/>
+    <id>https://sunshow.net/2012/03/30/hibernate-format-date-on-mapping/</id>
+    <published>2012-03-30T01:24:57.000Z</published>
+    <updated>2017-05-17T06:37:23.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用formula属性调用数据库原生的日期转换函数转换，不过这样就是数据库实现相关了&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+    
+      <category term="hibernate" scheme="https://sunshow.net/tags/hibernate/"/>
+    
+      <category term="date" scheme="https://sunshow.net/tags/date/"/>
+    
+      <category term="mysql" scheme="https://sunshow.net/tags/mysql/"/>
+    
+      <category term="数据库" scheme="https://sunshow.net/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="日期" scheme="https://sunshow.net/tags/%E6%97%A5%E6%9C%9F/"/>
+    
+      <category term="格式" scheme="https://sunshow.net/tags/%E6%A0%BC%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>手动添加Windows共享打印机</title>
+    <link href="https://sunshow.net/2011/12/19/add-shared-windows-printer-manually/"/>
+    <id>https://sunshow.net/2011/12/19/add-shared-windows-printer-manually/</id>
+    <published>2011-12-19T06:41:32.000Z</published>
+    <updated>2017-05-17T06:37:42.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Apple官方教程：&lt;a href=&quot;http://support.apple.com/kb/HT3049?viewlocale=zh_CN&quot; title=&quot;Mac OS X：如何手动添加 Windows 共享打印机&quot; target=&quot;_blank&quot; rel=&quot;extern
+    
+    </summary>
+    
+      <category term="Mac OS X" scheme="https://sunshow.net/categories/Mac-OS-X/"/>
+    
+    
+      <category term="encode" scheme="https://sunshow.net/tags/encode/"/>
+    
+      <category term="打印" scheme="https://sunshow.net/tags/%E6%89%93%E5%8D%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IE的“c00ce56e”b</title>
+    <link href="https://sunshow.net/2011/04/26/ie-c00ce56e-bug/"/>
+    <id>https://sunshow.net/2011/04/26/ie-c00ce56e-bug/</id>
+    <published>2011-04-26T00:08:28.000Z</published>
+    <updated>2017-05-17T06:38:32.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很简单的一个jQuery AJAX请求文件，IE8下报：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;t
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://sunshow.net/categories/Linux/"/>
+    
+      <category term="Network" scheme="https://sunshow.net/categories/Linux/Network/"/>
+    
+      <category term="WebDev" scheme="https://sunshow.net/categories/Linux/Network/WebDev/"/>
+    
+    
+      <category term="nginx" scheme="https://sunshow.net/tags/nginx/"/>
+    
+      <category term="bug" scheme="https://sunshow.net/tags/bug/"/>
+    
+      <category term="ie" scheme="https://sunshow.net/tags/ie/"/>
+    
+      <category term="编码" scheme="https://sunshow.net/tags/%E7%BC%96%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat请求HTTPS的注意事项</title>
+    <link href="https://sunshow.net/2011/03/27/tomcat-request-https-problem/"/>
+    <id>https://sunshow.net/2011/03/27/tomcat-request-https-problem/</id>
+    <published>2011-03-27T07:06:29.000Z</published>
+    <updated>2017-05-17T06:39:25.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;需要在catalia.sh里给JAVA_OPTS再增加一个参数&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+    
+      <category term="cxf" scheme="https://sunshow.net/tags/cxf/"/>
+    
+      <category term="socket" scheme="https://sunshow.net/tags/socket/"/>
+    
+      <category term="Tomcat" scheme="https://sunshow.net/tags/Tomcat/"/>
+    
+      <category term="https" scheme="https://sunshow.net/tags/https/"/>
+    
+      <category term="Linux" scheme="https://sunshow.net/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IE6提交表单到动态添加的iframe</title>
+    <link href="https://sunshow.net/2010/12/11/ie6-submit-form-to-dynamically-added-iframe/"/>
+    <id>https://sunshow.net/2010/12/11/ie6-submit-form-to-dynamically-added-iframe/</id>
+    <published>2010-12-11T02:56:32.000Z</published>
+    <updated>2017-05-17T06:40:16.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近做无刷新上传，传统方法是提交到隐藏的iframe里然后回调&lt;br&gt;不希望所有上传的页面都预设iframe，于是采用动态创建的方式（无视掉里面的jQuery吧）：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
+    
+    </summary>
+    
+      <category term="WebDev" scheme="https://sunshow.net/categories/WebDev/"/>
+    
+    
+      <category term="javascript" scheme="https://sunshow.net/tags/javascript/"/>
+    
+      <category term="innerHTML" scheme="https://sunshow.net/tags/innerHTML/"/>
+    
+      <category term="DOM" scheme="https://sunshow.net/tags/DOM/"/>
+    
+      <category term="iframe" scheme="https://sunshow.net/tags/iframe/"/>
+    
+      <category term="提交" scheme="https://sunshow.net/tags/%E6%8F%90%E4%BA%A4/"/>
+    
+      <category term="表单" scheme="https://sunshow.net/tags/%E8%A1%A8%E5%8D%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apache HttpClient与CLOSE_WAIT</title>
+    <link href="https://sunshow.net/2010/11/21/apache-httpclient-causes-closewait/"/>
+    <id>https://sunshow.net/2010/11/21/apache-httpclient-causes-closewait/</id>
+    <published>2010-11-21T06:59:04.000Z</published>
+    <updated>2017-05-17T07:58:13.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前几天开始服务器时不时无法accept新连接，由于线上环境的原因都没时间调试直接重启了事&lt;br&gt;昨天频繁发生了几次，仔细看了下系统日志发现：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;p
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+      <category term="Network" scheme="https://sunshow.net/categories/Java/Network/"/>
+    
+    
+      <category term="CLOSE_WAIT" scheme="https://sunshow.net/tags/CLOSE-WAIT/"/>
+    
+      <category term="http" scheme="https://sunshow.net/tags/http/"/>
+    
+      <category term="url" scheme="https://sunshow.net/tags/url/"/>
+    
+      <category term="连接" scheme="https://sunshow.net/tags/%E8%BF%9E%E6%8E%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[温故而知新]再谈IE中li之间高度空隙的问题</title>
+    <link href="https://sunshow.net/2010/11/02/other-ways-to-resolve-li-gap-bug/"/>
+    <id>https://sunshow.net/2010/11/02/other-ways-to-resolve-li-gap-bug/</id>
+    <published>2010-11-02T10:41:33.000Z</published>
+    <updated>2017-05-17T07:59:53.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;时隔两年之后，再次碰到IE6、IE7下li高度占用的bug，2008年的文章&lt;a href=&quot;/2008/10/23/ie-display-li-height-bug/&quot;&gt;在这里&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;之前的老办法还是能解决问题的，然后顺便研究了一下。&lt;/p&gt;
+&lt;p&gt;首先是
+    
+    </summary>
+    
+      <category term="WebDev" scheme="https://sunshow.net/categories/WebDev/"/>
+    
+    
+      <category term="容器" scheme="https://sunshow.net/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://sunshow.net/tags/css/"/>
+    
+      <category term="bug" scheme="https://sunshow.net/tags/bug/"/>
+    
+      <category term="ie" scheme="https://sunshow.net/tags/ie/"/>
+    
+      <category term="li" scheme="https://sunshow.net/tags/li/"/>
+    
+      <category term="高度" scheme="https://sunshow.net/tags/%E9%AB%98%E5%BA%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Spring+Hibernate]小心处理脏数据的自动更新</title>
+    <link href="https://sunshow.net/2010/09/14/caution-dirty-data-auto-update/"/>
+    <id>https://sunshow.net/2010/09/14/caution-dirty-data-auto-update/</id>
+    <published>2010-09-14T13:13:32.000Z</published>
+    <updated>2017-05-17T06:33:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有并发请求的时候会存在这种隐患&lt;br&gt;例如请求A和B都是同一个Action的实例，并取了同样的数据做处理&lt;br&gt;A–&amp;gt;取数据–&amp;gt;调用set方法设置A相关的数据–&amp;gt;（B处理数据的时间点）–&amp;gt;页面展现&lt;br&gt;B–&amp;gt;取数据–&amp;gt;调用set方法设置
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+    
+      <category term="hibernate" scheme="https://sunshow.net/tags/hibernate/"/>
+    
+      <category term="spring" scheme="https://sunshow.net/tags/spring/"/>
+    
+      <category term="transaction" scheme="https://sunshow.net/tags/transaction/"/>
+    
+      <category term="事务" scheme="https://sunshow.net/tags/%E4%BA%8B%E5%8A%A1/"/>
+    
+      <category term="更新" scheme="https://sunshow.net/tags/%E6%9B%B4%E6%96%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat支持SSI和软链接</title>
+    <link href="https://sunshow.net/2010/07/21/tomcat-enable-ssi-and-symbolic-links/"/>
+    <id>https://sunshow.net/2010/07/21/tomcat-enable-ssi-and-symbolic-links/</id>
+    <published>2010-07-21T03:23:12.000Z</published>
+    <updated>2017-05-17T06:33:56.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一. 启用SSI（Server Side Include）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;编辑Tomcat的web.xml，查找SSI，去掉相应的servlet和servlet-mapping的注释，或者也可以去掉filter的，二选一&lt;/li&gt;
+&lt;li&gt;给相应的Context
+    
+    </summary>
+    
+      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
+    
+      <category term="Linux" scheme="https://sunshow.net/categories/Java/Linux/"/>
+    
+    
+      <category term="链接" scheme="https://sunshow.net/tags/%E9%93%BE%E6%8E%A5/"/>
+    
+      <category term="Context" scheme="https://sunshow.net/tags/Context/"/>
+    
+      <category term="Tomcat" scheme="https://sunshow.net/tags/Tomcat/"/>
+    
+      <category term="servlet" scheme="https://sunshow.net/tags/servlet/"/>
+    
+  </entry>
+  
+</feed>
