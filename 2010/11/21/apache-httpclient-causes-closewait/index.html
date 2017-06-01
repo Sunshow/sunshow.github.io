@@ -100,7 +100,7 @@
 <meta property="og:url" content="https://sunshow.net/2010/11/21/apache-httpclient-causes-closewait/index.html">
 <meta property="og:site_name" content="Sunshow Life">
 <meta property="og:description" content="前几天开始服务器时不时无法accept新连接，由于线上环境的原因都没时间调试直接重启了事昨天频繁发生了几次，仔细看了下系统日志发现：1java.net.SocketException: Too many open files 用netstat看发现有大量的CLOSE_WAIT，搜索发现与libcurl的处理类似，apache-commons的HttpClient也默认保持了连接待复用处理。 解决办">
-<meta property="og:updated_time" content="2017-05-17T07:58:13.000Z">
+<meta property="og:updated_time" content="2017-06-01T07:35:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache HttpClient与CLOSE_WAIT">
 <meta name="twitter:description" content="前几天开始服务器时不时无法accept新连接，由于线上环境的原因都没时间调试直接重启了事昨天频繁发生了几次，仔细看了下系统日志发现：1java.net.SocketException: Too many open files 用netstat看发现有大量的CLOSE_WAIT，搜索发现与libcurl的处理类似，apache-commons的HttpClient也默认保持了连接待复用处理。 解决办">
@@ -316,17 +316,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/Network/" itemprop="url" rel="index">
-                    <span itemprop="name">Network</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -488,7 +477,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -498,10 +487,10 @@
             
             
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">15</span>
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -509,10 +498,10 @@
             
             
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">120</span>
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">121</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 

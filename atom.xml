@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sunshow.net/"/>
-  <updated>2017-05-18T06:41:14.000Z</updated>
+  <updated>2017-06-01T07:50:28.000Z</updated>
   <id>https://sunshow.net/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>批量 Kill MySQL 连接</title>
+    <link href="https://sunshow.net/2017/06/01/batch-kill-mysql-connections/"/>
+    <id>https://sunshow.net/2017/06/01/batch-kill-mysql-connections/</id>
+    <published>2017-06-01T07:40:17.000Z</published>
+    <updated>2017-06-01T07:50:28.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;基础知识：&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;l
+    
+    </summary>
+    
+      <category term="Database" scheme="https://sunshow.net/categories/Database/"/>
+    
+    
+      <category term="MySQL" scheme="https://sunshow.net/tags/MySQL/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Data JPA 添加自定义默认方法</title>
@@ -130,7 +150,7 @@
     <link href="https://sunshow.net/2016/06/28/apache-cxf-client-development/"/>
     <id>https://sunshow.net/2016/06/28/apache-cxf-client-development/</id>
     <published>2016-06-28T10:07:39.000Z</published>
-    <updated>2017-05-17T07:16:29.000Z</updated>
+    <updated>2017-06-01T07:37:43.000Z</updated>
     
     <summary type="html">
     
@@ -139,8 +159,6 @@
     </summary>
     
       <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
-    
-      <category term="WebDev" scheme="https://sunshow.net/categories/Java/WebDev/"/>
     
     
       <category term="cxf" scheme="https://sunshow.net/tags/cxf/"/>
@@ -180,7 +198,7 @@
     <link href="https://sunshow.net/2013/08/18/config-keepalive-of-nginx-proxy/"/>
     <id>https://sunshow.net/2013/08/18/config-keepalive-of-nginx-proxy/</id>
     <published>2013-08-18T13:01:24.000Z</published>
-    <updated>2017-05-17T06:54:04.000Z</updated>
+    <updated>2017-06-01T07:36:58.000Z</updated>
     
     <summary type="html">
     
@@ -190,11 +208,7 @@
     
     </summary>
     
-      <category term="Linux" scheme="https://sunshow.net/categories/Linux/"/>
-    
-      <category term="Network" scheme="https://sunshow.net/categories/Linux/Network/"/>
-    
-      <category term="WebDev" scheme="https://sunshow.net/categories/Linux/Network/WebDev/"/>
+      <category term="Network" scheme="https://sunshow.net/categories/Network/"/>
     
     
       <category term="keepalive" scheme="https://sunshow.net/tags/keepalive/"/>
@@ -339,7 +353,7 @@
     <link href="https://sunshow.net/2011/04/26/ie-c00ce56e-bug/"/>
     <id>https://sunshow.net/2011/04/26/ie-c00ce56e-bug/</id>
     <published>2011-04-26T00:08:28.000Z</published>
-    <updated>2017-05-17T06:38:32.000Z</updated>
+    <updated>2017-06-01T07:31:59.000Z</updated>
     
     <summary type="html">
     
@@ -347,11 +361,7 @@
     
     </summary>
     
-      <category term="Linux" scheme="https://sunshow.net/categories/Linux/"/>
-    
-      <category term="Network" scheme="https://sunshow.net/categories/Linux/Network/"/>
-    
-      <category term="WebDev" scheme="https://sunshow.net/categories/Linux/Network/WebDev/"/>
+      <category term="WebDev" scheme="https://sunshow.net/categories/WebDev/"/>
     
     
       <category term="nginx" scheme="https://sunshow.net/tags/nginx/"/>
@@ -413,13 +423,13 @@
     
       <category term="innerHTML" scheme="https://sunshow.net/tags/innerHTML/"/>
     
-      <category term="DOM" scheme="https://sunshow.net/tags/DOM/"/>
-    
-      <category term="iframe" scheme="https://sunshow.net/tags/iframe/"/>
-    
       <category term="提交" scheme="https://sunshow.net/tags/%E6%8F%90%E4%BA%A4/"/>
     
       <category term="表单" scheme="https://sunshow.net/tags/%E8%A1%A8%E5%8D%95/"/>
+    
+      <category term="DOM" scheme="https://sunshow.net/tags/DOM/"/>
+    
+      <category term="iframe" scheme="https://sunshow.net/tags/iframe/"/>
     
   </entry>
   
@@ -428,7 +438,7 @@
     <link href="https://sunshow.net/2010/11/21/apache-httpclient-causes-closewait/"/>
     <id>https://sunshow.net/2010/11/21/apache-httpclient-causes-closewait/</id>
     <published>2010-11-21T06:59:04.000Z</published>
-    <updated>2017-05-17T07:58:13.000Z</updated>
+    <updated>2017-06-01T07:35:55.000Z</updated>
     
     <summary type="html">
     
@@ -437,8 +447,6 @@
     </summary>
     
       <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
-    
-      <category term="Network" scheme="https://sunshow.net/categories/Java/Network/"/>
     
     
       <category term="CLOSE_WAIT" scheme="https://sunshow.net/tags/CLOSE-WAIT/"/>
@@ -508,37 +516,6 @@
       <category term="事务" scheme="https://sunshow.net/tags/%E4%BA%8B%E5%8A%A1/"/>
     
       <category term="更新" scheme="https://sunshow.net/tags/%E6%9B%B4%E6%96%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tomcat支持SSI和软链接</title>
-    <link href="https://sunshow.net/2010/07/21/tomcat-enable-ssi-and-symbolic-links/"/>
-    <id>https://sunshow.net/2010/07/21/tomcat-enable-ssi-and-symbolic-links/</id>
-    <published>2010-07-21T03:23:12.000Z</published>
-    <updated>2017-05-17T06:33:56.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一. 启用SSI（Server Side Include）&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;编辑Tomcat的web.xml，查找SSI，去掉相应的servlet和servlet-mapping的注释，或者也可以去掉filter的，二选一&lt;/li&gt;
-&lt;li&gt;给相应的Context
-    
-    </summary>
-    
-      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
-    
-      <category term="Linux" scheme="https://sunshow.net/categories/Java/Linux/"/>
-    
-    
-      <category term="链接" scheme="https://sunshow.net/tags/%E9%93%BE%E6%8E%A5/"/>
-    
-      <category term="Context" scheme="https://sunshow.net/tags/Context/"/>
-    
-      <category term="Tomcat" scheme="https://sunshow.net/tags/Tomcat/"/>
-    
-      <category term="servlet" scheme="https://sunshow.net/tags/servlet/"/>
     
   </entry>
   
