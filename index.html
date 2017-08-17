@@ -257,6 +257,182 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://sunshow.net/2017/08/17/best-practice-of-cache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sunshow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sunshow Life">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/17/best-practice-of-cache/" itemprop="url">缓存使用最佳实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T13:20:16+08:00">
+                2017-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>所谓最佳实践没有标准，只是把个人的一些经验总结一下。</p>
+<p>根据使用场景，我把缓存简单分成两个大类：</p>
+<ol>
+<li>非一致性缓存</li>
+<li>一致性缓存</li>
+</ol>
+<h2 id="一般规则"><a href="#一般规则" class="headerlink" title="一般规则"></a>一般规则</h2><h3 id="为每一个缓存设置过期时间"><a href="#为每一个缓存设置过期时间" class="headerlink" title="为每一个缓存设置过期时间"></a>为每一个缓存设置过期时间</h3><p>推荐在任何时候设置缓存时，都设置一定的有效期或者过期时间。</p>
+<p>设置过期时间，大体上有以下好处：</p>
+<ol>
+<li>让开发者养成不依赖于缓存存在的开发习惯</li>
+<li>明确区别于持久化存储</li>
+<li>避免消耗过多的内存（缓存空间）</li>
+</ol>
+<p>对于第三点，以 Redis 为例，默认 Redis 只会使用内存作为缓存存储空间，如果有持续增加的不会过期的缓存内容生成，最终会导致内存耗尽导致服务崩溃，我曾经吃过这个亏。</p>
+<h3 id="允许缓存失效且可被重建"><a href="#允许缓存失效且可被重建" class="headerlink" title="允许缓存失效且可被重建"></a>允许缓存失效且可被重建</h3><p>从缓存这个名字的中文字面意思理解，缓存应该是一个临时性的存储，开发者使用时必须要做好面对缓存不存在的准备，同时根据不同的使用场景，决定是否需要重建缓存。</p>
+<p>以我司某历史遗留系统功能为例，由于查询过慢，最后使用的解决方案是单独跑一个线程以较短间隔定期去执行查询并设置一个长效缓存，前端业务直接读取缓存结果展现。</p>
+<p>这个方案属于很常见的处理方案，并没有什么大的问题，但是一旦设置缓存的线程跑挂了，就会导致缓存失效或者缓存长时间不更新导致用户看不到最新数据等问题。</p>
+<p>可选的改进方案之一，在前端业务未请求到缓存数据时触发缓存刷新（何时刷新，刷新策略，都是一个很复杂的命题，需要根据具体使用场景和时效性要求具体分析），同时发送系统内部报警给相关负责人。</p>
+<h3 id="对缓存的-Key-进行统一管理"><a href="#对缓存的-Key-进行统一管理" class="headerlink" title="对缓存的 Key 进行统一管理"></a>对缓存的 Key 进行统一管理</h3><p>对于 Key-Value 缓存，由于使用方便，如果没有一个好的开发规范对 Key 进行统一管理，不可避免的会造成问题追溯困难、Key 冲突等问题。</p>
+<p>好的 Key 管理，应该考虑到以下这些方面：</p>
+<ol>
+<li>支持 namespace ，通常表现为 Key 前缀的形式</li>
+<li>Key 生成策略配置和管理</li>
+<li>支持分区/分片，例如 Redis 的不同 DB ，或者分布式系统的水平拆分等</li>
+</ol>
+<p>当完成了统一管理之后，就可以简单的通过 Filter 等机制，加入一些例如统计之类的功能。</p>
+<h2 id="非一致性缓存"><a href="#非一致性缓存" class="headerlink" title="非一致性缓存"></a>非一致性缓存</h2><p>即缓存数据和持久层的数据允许不一致，绝大多数的缓存应用场景都可以是非一致性缓存，例如各种列表查询业务。</p>
+<p>用流行的术语来讲，非一致性缓存只追求最终一致性，对于一致性的期望值直接取决于缓存时长的设置。</p>
+<p>非一致性缓存通常是短时的缓存，一般不会超过分钟级。</p>
+<h3 id="前端系统对所有查询设置缓存"><a href="#前端系统对所有查询设置缓存" class="headerlink" title="前端系统对所有查询设置缓存"></a>前端系统对所有查询设置缓存</h3><p>对于直接被触发的前端业务系统，大部分情况下请求数量并不受自己控制，此时推荐对所有查询结果设置缓存。</p>
+<p>对于使用 Spring 等流行框架开发的 Web 系统来说，通常都可以很方便的在全局实现查询结果缓存，并根据不同的业务需求对不同的请求接口设置缓存时间，例如可以通过设置全局默认一秒的缓存时间之类的设计来抵抗并发。</p>
+<h3 id="防止雪崩"><a href="#防止雪崩" class="headerlink" title="防止雪崩"></a>防止雪崩</h3><p>极端情况下，如果大量请求进入的瞬间缓存失效，此时缓存的重建策略如果是每个连接各自通过持久层读取，则可能对持久层带来巨大压力导致雪崩效应发生。</p>
+<p>对于这种情况，流行的做法有单连接更新其他连接等待、限流排队等处理方式，具体采用何种方式仍需要根据业务场景进行分析。</p>
+<h2 id="一致性缓存"><a href="#一致性缓存" class="headerlink" title="一致性缓存"></a>一致性缓存</h2><p>一致性缓存通常作为持久层的一个中间层，为减少数据库的查询压力使用。例如 Hibernate 的一级缓存，相应的上述的非一致性缓存也可以称为是二级缓存。</p>
+<p>一致性缓存通常是长时间的缓存，其更新时间可能是定期的，也可能是根据持久层的更新而更新。</p>
+<h3 id="对使用者不可见"><a href="#对使用者不可见" class="headerlink" title="对使用者不可见"></a>对使用者不可见</h3><p>由于一致性的保障，一致性缓存可以和持久层作为一个整体对外提供服务，使用者不需要关心数据来源于缓存还是持久层。</p>
+<h3 id="写操作统一入口"><a href="#写操作统一入口" class="headerlink" title="写操作统一入口"></a>写操作统一入口</h3><p>还是为了更好的保障一致性，缓存的写操作入口一般和持久层的写操作同时进行，且只有一处入口。</p>
+<h3 id="保证更新成功"><a href="#保证更新成功" class="headerlink" title="保证更新成功"></a>保证更新成功</h3><p>对于非一致性缓存，基本不用关心缓存的更新问题，直接等缓存自然失效并重建即可，或者通过缓存的 invalidate 调用强制失效重建。</p>
+<p>而对于一致性缓存，更新操作必须要保证缓存更新成功，如果只是简单的使原缓存失效，就会导致不一致。</p>
+<p>看以下场景：</p>
+<p>线程一：读取缓存 A (1) -&gt; A 失效 -&gt; 读取 A 的持久层数据 (2) -&gt; 设置新的缓存 A (3)<br>线程二：更新 A 的持久层数据 (4) -&gt; 使缓存 A 失效 (5)</p>
+<p>如果上述的 (2) 操作发生在 (4) 之前，(3) 操作发生在 (5) 之后，则会创建出一个在 (4) 操作之前的历史脏数据的缓存，导致非一致性。</p>
+<p>所幸，各个流行的缓存系统均提供了类似于 CAS (Check and Set) 的操作来保证更新成功。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://sunshow.net/2017/06/01/batch-kill-mysql-connections/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1558,152 +1734,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://sunshow.net/2013/04/16/nginx-404-page-nested-include-issue-while-using-ssi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sunshow">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sunshow Life">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/04/16/nginx-404-page-nested-include-issue-while-using-ssi/" itemprop="url">解决nginx的404页面使用SSI时循环嵌套的问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-16T18:06:39+08:00">
-                2013-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WebDev/" itemprop="url" rel="index">
-                    <span itemprop="name">WebDev</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题场景：</p>
-<ol>
-<li>nginx配置了404页面且指向一个使用了SSI include的页面（例如：404.shtml）</li>
-<li>由于配置等原因，404.shtml中include的内容也不存在（也返回404）</li>
-</ol>
-<p>造成结果：<br>request-&gt;404-&gt;redirect to 404.shtm-&gt;include a 404.shtml-&gt;include…<br>从而导致所有nginx的工作进程都被此请求的死循环block住</p>
-<p>解决办法：</p>
-<p>参考<a href="http://wiki.nginx.org/HttpSsiModule" target="_blank" rel="external">nginx SSI的文档</a>，利用block语句和include语句中的stub属性：</p>
-<blockquote>
-<p>stub — The name of the block to use as a default if the request is empty or returns an error.</p>
-</blockquote>
-<p>首先在404.shtml中定义一个block：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--# block name="file_not_found" --&gt;</span></div><div class="line">SSI Not Found</div><div class="line"><span class="comment">&lt;!--# endblock --&gt;</span></div></pre></td></tr></table></figure></p>
-<p>然后在需要include的地方使用stub将include出错时的内容指向上面定义的block：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--#include file="/foobar.shtml" stub="file_not_found"--&gt;</span></div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1753,7 +1783,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1764,7 +1794,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1775,7 +1805,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-count">122</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

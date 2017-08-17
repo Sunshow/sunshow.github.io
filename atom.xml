@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sunshow.net/"/>
-  <updated>2017-06-01T07:50:28.000Z</updated>
+  <updated>2017-08-17T07:01:40.000Z</updated>
   <id>https://sunshow.net/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>缓存使用最佳实践</title>
+    <link href="https://sunshow.net/2017/08/17/best-practice-of-cache/"/>
+    <id>https://sunshow.net/2017/08/17/best-practice-of-cache/</id>
+    <published>2017-08-17T05:20:16.000Z</published>
+    <updated>2017-08-17T07:01:40.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;所谓最佳实践没有标准，只是把个人的一些经验总结一下。&lt;/p&gt;
+&lt;p&gt;根据使用场景，我把缓存简单分成两个大类：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;非一致性缓存&lt;/li&gt;
+&lt;li&gt;一致性缓存&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;一般规则&quot;&gt;&lt;a href=&quot;#一般规则&quot; class=
+    
+    </summary>
+    
+      <category term="Programming" scheme="https://sunshow.net/categories/Programming/"/>
+    
+    
+      <category term="Cache" scheme="https://sunshow.net/tags/Cache/"/>
+    
+  </entry>
   
   <entry>
     <title>批量 Kill MySQL 连接</title>
@@ -488,34 +514,6 @@
       <category term="li" scheme="https://sunshow.net/tags/li/"/>
     
       <category term="高度" scheme="https://sunshow.net/tags/%E9%AB%98%E5%BA%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[Spring+Hibernate]小心处理脏数据的自动更新</title>
-    <link href="https://sunshow.net/2010/09/14/caution-dirty-data-auto-update/"/>
-    <id>https://sunshow.net/2010/09/14/caution-dirty-data-auto-update/</id>
-    <published>2010-09-14T13:13:32.000Z</published>
-    <updated>2017-05-17T06:33:34.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;有并发请求的时候会存在这种隐患&lt;br&gt;例如请求A和B都是同一个Action的实例，并取了同样的数据做处理&lt;br&gt;A–&amp;gt;取数据–&amp;gt;调用set方法设置A相关的数据–&amp;gt;（B处理数据的时间点）–&amp;gt;页面展现&lt;br&gt;B–&amp;gt;取数据–&amp;gt;调用set方法设置
-    
-    </summary>
-    
-      <category term="Java" scheme="https://sunshow.net/categories/Java/"/>
-    
-    
-      <category term="hibernate" scheme="https://sunshow.net/tags/hibernate/"/>
-    
-      <category term="spring" scheme="https://sunshow.net/tags/spring/"/>
-    
-      <category term="transaction" scheme="https://sunshow.net/tags/transaction/"/>
-    
-      <category term="事务" scheme="https://sunshow.net/tags/%E4%BA%8B%E5%8A%A1/"/>
-    
-      <category term="更新" scheme="https://sunshow.net/tags/%E6%9B%B4%E6%96%B0/"/>
     
   </entry>
   
